@@ -2,7 +2,8 @@
  * API Client with retry logic and error handling
  */
 
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
+import axios from 'axios'
+import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import { env } from '@/config/env'
 import { API_ERRORS, ERROR_MESSAGES, RETRY_CONFIG } from '@/shared/lib/constants'
 import type { APIError } from '../types'
@@ -11,12 +12,13 @@ import type { APIError } from '../types'
  * Custom error class for API errors
  */
 export class APIClientError extends Error {
-  constructor(
-    public statusCode: number,
-    public errorCode?: string,
-    message?: string
-  ) {
+  statusCode: number
+  errorCode?: string
+
+  constructor(statusCode: number, errorCode?: string, message?: string) {
     super(message || ERROR_MESSAGES.DEFAULT)
+    this.statusCode = statusCode
+    this.errorCode = errorCode
     this.name = 'APIClientError'
   }
 
