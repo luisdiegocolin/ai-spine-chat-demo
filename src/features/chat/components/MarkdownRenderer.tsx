@@ -15,7 +15,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
       components={{
         // Paragraphs
         p: ({ ...props }) => (
-          <p className={`text-sm leading-relaxed ${textColor} mb-2 last:mb-0 break-words`} {...props} />
+          <p className={`text-sm leading-relaxed ${textColor} mb-2 last:mb-0 wrap-break-words`} {...props} />
         ),
         // Bold text
         strong: ({ ...props }) => (
