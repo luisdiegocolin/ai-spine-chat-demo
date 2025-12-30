@@ -4,9 +4,9 @@
  */
 
 /**
- * Message role (user or assistant)
+ * Message role (user, assistant, or error)
  */
-export type MessageRole = 'user' | 'assistant'
+export type MessageRole = 'user' | 'assistant' | 'error'
 
 /**
  * Single chat message
@@ -15,6 +15,7 @@ export interface Message {
   role: MessageRole
   content: string
   timestamp: string
+  isError?: boolean  // For error messages
 }
 
 /**
@@ -63,10 +64,8 @@ export interface APIError {
 export interface ChatState {
   messages: Message[]
   sessionId: string
-  isInitialized: boolean
 
   // Actions
   addMessage: (message: Message) => void
   clearChat: () => void
-  initializeSession: () => void
 }

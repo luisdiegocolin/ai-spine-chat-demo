@@ -5,7 +5,7 @@
 
 import { useMutation } from '@tanstack/react-query'
 import { useChatStore } from '../store'
-import { chatAPI } from '../api'
+import { chatAPI, APIClientError } from '../api'
 import type { Message } from '../types'
 
 /**
@@ -57,7 +57,26 @@ export function useChat() {
     },
 
     onError: (error) => {
-      // Log error (user will see it via error state)
+      // Get user-friendly error message
+      let errorText = 'Failed to send message. Please try again.'
+
+      if (error instanceof APIClientError) {
+        errorText = error.message
+      } else if (error instanceof Error) {
+        errorText = error.message
+      }
+
+      // Add error message to chat
+      const errorMessage: Message = {
+        role: 'error',
+        content: errorText,
+        timestamp: new Date().toISOString(),
+        isError: true,
+      }
+
+      addMessage(errorMessage)
+
+      // Also log for debugging
       console.error('Failed to send message:', error)
     },
   })

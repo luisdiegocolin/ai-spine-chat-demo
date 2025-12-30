@@ -20,24 +20,12 @@ function generateSessionId(): string {
  */
 export const useChatStore = create<ChatState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       // State
       messages: [],
       sessionId: generateSessionId(),
-      isInitialized: false,
 
       // Actions
-      initializeSession: () => {
-        const state = get()
-
-        // If no sessionId, generate one
-        if (!state.sessionId) {
-          set({ sessionId: generateSessionId() })
-        }
-
-        set({ isInitialized: true })
-      },
-
       addMessage: (message: Message) => {
         set((state) => {
           const newMessages = [...state.messages, message]
@@ -68,12 +56,9 @@ export const useChatStore = create<ChatState>()(
 
       // Sync across tabs
       onRehydrateStorage: () => {
-        return (state, error) => {
+        return (_state, error) => {
           if (error) {
             console.error('Failed to rehydrate chat store:', error)
-          } else if (state) {
-            // Mark as initialized after rehydration
-            state.isInitialized = true
           }
         }
       },
