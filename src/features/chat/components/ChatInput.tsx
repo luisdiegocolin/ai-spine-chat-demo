@@ -44,7 +44,7 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
   const isOverLimit = message.length > VALIDATION.MAX_MESSAGE_LENGTH
 
   return (
-    <div className="border-t border-white/10 bg-white/5 rounded-b-[26px]">
+    <div className="border-t border-white/10 bg-white/5 rounded-[26px]">
       <div className="relative px-2 pb-2 pt-4 sm:px-4 sm:pb-4">
         <textarea
           ref={textareaRef}

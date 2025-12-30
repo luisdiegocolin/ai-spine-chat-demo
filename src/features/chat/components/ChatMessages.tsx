@@ -37,12 +37,12 @@ export function ChatMessages({ isLoading }: ChatMessagesProps) {
 
   return (
     <div className="flex-1 overflow-y-auto p-4 md:p-5 space-y-3 min-h-0">
-      {messages.map((message, index) => (
-        <ChatMessage key={index} message={message} />
-      ))}
+        {messages.map((message, index) => (
+          <ChatMessage key={index} message={message} />
+        ))}
 
-      {/* Typing indicator */}
-      {isLoading && <TypingIndicator />}
+        {/* Typing indicator */}
+        {isLoading && <TypingIndicator />}
 
       {/* Scroll anchor */}
       <div ref={messagesEndRef} />

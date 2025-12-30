@@ -57,10 +57,14 @@ export function ChatContainer() {
 
   // With messages: normal layout
   return (
-    <div className={`${glassShellClass} h-screen flex flex-col`}>
-      <ChatHeader onClearChat={handleClearChat} />
-      <ChatMessages isLoading={isLoading} />
-      <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+    <div className={`${glassShellClass} h-screen flex flex-col items-center`}>
+      <div className="w-3/5">
+        <ChatHeader onClearChat={handleClearChat} />
+      </div>
+      <div className="flex-1 w-3/5 flex flex-col min-h-0">
+        <ChatMessages isLoading={isLoading} />
+        <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
+      </div>
     </div>
   )
 }
