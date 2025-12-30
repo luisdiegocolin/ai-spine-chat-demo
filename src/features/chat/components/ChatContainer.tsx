@@ -28,9 +28,11 @@ export function ChatContainer() {
   // Empty state: centered layout
   if (!hasMessages) {
     return (
-      <div className={`${glassShellClass} h-screen flex flex-col`}>
-        <ChatHeader onClearChat={handleClearChat} />
-        <div className="flex-1 flex flex-col items-center justify-center p-5">
+      <div className={`${glassShellClass} h-screen flex flex-col items-center`}>
+        <div className="w-3/5">
+          <ChatHeader onClearChat={handleClearChat} />
+        </div>
+        <div className="flex-1 w-3/5 flex flex-col items-center justify-center p-5">
           <div className="w-full max-w-2xl space-y-6">
             {/* Placeholder content */}
             <div className="flex flex-col items-center text-center space-y-4">

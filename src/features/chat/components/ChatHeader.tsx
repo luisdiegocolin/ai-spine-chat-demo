@@ -20,10 +20,11 @@ export function ChatHeader({ onClearChat }: ChatHeaderProps) {
 
         <button
           onClick={onClearChat}
-          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/20"
+          className="inline-flex items-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/20"
+          style={{ gap: '0.75rem', paddingLeft: '0.875rem', paddingRight: '0.875rem', paddingTop: '0.375rem', paddingBottom: '0.375rem' }}
           title="Clear chat and start new session"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-5 w-5" />
           New
         </button>
       </div>

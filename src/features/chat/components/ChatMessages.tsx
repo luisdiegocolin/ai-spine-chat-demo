@@ -36,7 +36,7 @@ export function ChatMessages({ isLoading }: ChatMessagesProps) {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto p-4 md:p-5 space-y-3 min-h-0">
+    <div className="flex-1 overflow-y-auto min-h-0" style={{ padding: '0.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         {messages.map((message, index) => (
           <ChatMessage key={index} message={message} />
         ))}

@@ -12,7 +12,6 @@ export function TypingIndicator() {
         />
         <div className="w-2 h-2 bg-white/60 rounded-full animate-bounce" />
       </div>
-      <span className="text-sm text-white/60">AI is typing...</span>
     </div>
   )
 }

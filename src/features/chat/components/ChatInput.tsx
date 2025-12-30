@@ -44,8 +44,8 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
   const isOverLimit = message.length > VALIDATION.MAX_MESSAGE_LENGTH
 
   return (
-    <div className="border-t border-white/10 bg-white/5 rounded-[26px]">
-      <div className="relative px-2 pb-2 pt-4 sm:px-4 sm:pb-4">
+    <div className="border-t border-white/10 bg-white/5 rounded-[26px]" style={{ marginTop: '1rem' }}>
+      <div className="relative" style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingBottom: '1.5rem', paddingTop: '1.25rem' }}>
         <textarea
           ref={textareaRef}
           value={message}
@@ -53,7 +53,8 @@ export function ChatInput({ onSendMessage, isLoading }: ChatInputProps) {
           onKeyDown={handleKeyPress}
           onInput={handleInput}
           placeholder="Type your message..."
-          className="w-full rounded-[24px] border border-white/10 bg-white/5 px-6 py-4 pr-24 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/40 min-h-[56px] max-h-[200px] resize-none overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="w-full rounded-[24px] border border-white/10 bg-white/5 pr-24 text-sm text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/40 resize-none overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          style={{ paddingLeft: '1.5rem', paddingRight: '6rem', paddingTop: '1rem', paddingBottom: '1rem', minHeight: '56px', maxHeight: '200px' }}
           rows={1}
         />
 
