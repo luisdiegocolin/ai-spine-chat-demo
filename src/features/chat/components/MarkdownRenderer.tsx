@@ -1,4 +1,6 @@
 import ReactMarkdown from 'react-markdown'
+import { FilePreview } from './FilePreview'
+import { isGeneratedFile } from '../utils/fileDetector'
 
 interface MarkdownRendererProps {
   content: string
@@ -48,9 +50,18 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
           <h3 className={`text-sm font-semibold ${strongColor} mb-2`} {...props} />
         ),
         // Links
-        a: ({ ...props }) => (
-          <a className="text-[#d8ffb3] hover:text-[#bfffd1] underline transition-colors" {...props} />
-        ),
+        a: ({ href, children, ...props }) => {
+          // Check if this is a generated file from AI Spine
+          if (href && isGeneratedFile(href)) {
+            return <FilePreview url={href}>{children}</FilePreview>
+          }
+          // Normal links
+          return (
+            <a href={href} className="text-[#d8ffb3] hover:text-[#bfffd1] underline transition-colors" {...props}>
+              {children}
+            </a>
+          )
+        },
         // Blockquotes
         blockquote: ({ ...props }) => (
           <blockquote className={`border-l-2 border-white/30 pl-3 italic ${mutedColor} my-2`} {...props} />
