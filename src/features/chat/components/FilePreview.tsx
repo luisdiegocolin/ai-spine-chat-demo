@@ -1,4 +1,4 @@
-import { FileText } from 'lucide-react'
+import { FileText, FileType2, FileSpreadsheet } from 'lucide-react'
 import { detectFileType } from '../utils/fileDetector'
 
 interface FilePreviewProps {
@@ -29,6 +29,66 @@ export function FilePreview({ url, children }: FilePreviewProps) {
           <span className="text-white/60" style={{ fontSize: '10px' }}>Click to open</span>
         </div>
       </a>
+    )
+  }
+
+  // Word document preview - show as card with icon
+  if (fileType === 'word') {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 no-underline"
+        style={{ padding: '0.5rem 0.75rem' }}
+      >
+        <div className="flex items-center justify-center w-8 h-8 bg-blue-400/20 rounded">
+          <FileType2 className="w-4 h-4 text-blue-400" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-white font-medium text-xs">
+            {children || 'Word Document'}
+          </span>
+          <span className="text-white/60" style={{ fontSize: '10px' }}>Click to open</span>
+        </div>
+      </a>
+    )
+  }
+
+  // Excel spreadsheet preview - show as card with icon
+  if (fileType === 'excel') {
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-lg transition-all duration-300 no-underline"
+        style={{ padding: '0.5rem 0.75rem' }}
+      >
+        <div className="flex items-center justify-center w-8 h-8 bg-green-400/20 rounded">
+          <FileSpreadsheet className="w-4 h-4 text-green-400" />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-white font-medium text-xs">
+            {children || 'Excel Spreadsheet'}
+          </span>
+          <span className="text-white/60" style={{ fontSize: '10px' }}>Click to open</span>
+        </div>
+      </a>
+    )
+  }
+
+  // Video preview - show inline player
+  if (fileType === 'video') {
+    return (
+      <video
+        controls
+        className="max-w-full rounded-lg border border-white/20"
+        style={{ maxHeight: '400px' }}
+      >
+        <source src={url} />
+        Tu navegador no soporta la reproducción de videos.
+      </video>
     )
   }
 
